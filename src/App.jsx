@@ -37,7 +37,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 antialiased">
+    <div className="w-full min-h-screen bg-slate-950 text-slate-200 antialiased">
       {/* Decorative background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-3xl" />
