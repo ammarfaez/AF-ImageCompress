@@ -46,7 +46,7 @@ function App() {
 
       {/* Header / Hero */}
       <header className="relative px-4 pt-20 pb-12 sm:pt-24 sm:pb-16">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium mb-8">
             <Sparkles className="w-4 h-4" />
             Free · Private · In-browser
@@ -62,7 +62,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="relative max-w-4xl mx-auto px-4 pb-20 sm:pb-24">
+      <main className="relative max-w-4xl mx-auto px-4 pb-20 sm:pb-24" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
         {/* Drop Zone */}
         <DropZone onFilesAdded={addImages} />
 
@@ -165,7 +165,7 @@ function App() {
 
       {/* Features strip */}
       {!hasImages && (
-        <div className="relative max-w-4xl mx-auto px-4 pb-20">
+        <div className="relative max-w-4xl mx-auto px-4 pb-20" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="grid sm:grid-cols-3 gap-5">
             <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <ShieldCheck className="w-6 h-6 text-green-400 mb-3" />
@@ -188,7 +188,7 @@ function App() {
 
       {/* Footer */}
       <footer className="relative py-10 text-center border-t border-slate-800/70">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
           <p className="text-sm text-slate-500">
             All processing happens in your browser. Your images never leave your device.
           </p>
