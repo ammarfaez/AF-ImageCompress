@@ -83,14 +83,7 @@ function App() {
               <button
                 onClick={handleCompressAll}
                 disabled={isCompressing || pendingCount === 0}
-                className={`
-                  flex items-center gap-2 px-6 py-3 rounded-xl font-medium
-                  transition-all duration-200
-                  ${isCompressing || pendingCount === 0
-                    ? 'bg-slate-800 text-slate-600 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:shadow-blue-500/30'
-                  }
-                `}
+                className="btn btn-primary px-6 py-3 text-sm"
               >
                 <Zap className="w-5 h-5" />
                 {isCompressing ? 'Compressing...' : `Compress All (${pendingCount})`}
@@ -100,10 +93,7 @@ function App() {
                 <>
                   <button
                     onClick={handleDownloadAll}
-                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium
-                      bg-green-600 hover:bg-green-500 text-white
-                      shadow-lg shadow-green-600/25 hover:shadow-green-500/30
-                      transition-all duration-200"
+                    className="btn btn-success px-6 py-3 text-sm"
                   >
                     <Download className="w-5 h-5" />
                     Download All (ZIP)
@@ -111,9 +101,7 @@ function App() {
 
                   <button
                     onClick={clearAll}
-                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium
-                      bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700
-                      transition-all duration-200"
+                    className="btn btn-ghost px-6 py-3 text-sm"
                   >
                     <Trash2 className="w-5 h-5" />
                     Clear All

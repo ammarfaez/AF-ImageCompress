@@ -85,9 +85,7 @@ const ImageCard = ({ image, format, onRemove }) => {
             {image.status === 'done' && (
               <button
                 onClick={handleDownload}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5
-                  bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium
-                  rounded-xl transition-colors duration-200"
+                className="btn btn-primary flex-1 px-4 py-2.5 text-sm"
               >
                 <Download className="w-4 h-4" />
                 Download
@@ -96,9 +94,7 @@ const ImageCard = ({ image, format, onRemove }) => {
 
             <button
               onClick={() => onRemove(image.id)}
-              className="p-2.5 bg-slate-800 hover:bg-slate-700
-                text-slate-400 hover:text-red-400 rounded-xl
-                transition-colors duration-200"
+              className="btn-icon"
             >
               <Trash2 className="w-4 h-4" />
             </button>
