@@ -130,6 +130,26 @@ button:focus-visible {
   transform: translateY(0) scale(0.97);
 }
 
+/* Outline (info) */
+.btn-outline {
+  color: #60a5fa;
+  background-color: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.btn-outline:hover:not(:disabled) {
+  transform: translateY(-2px);
+  color: #fff;
+  background-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(96, 165, 250, 0.65);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
 /* Icon-only button */
 .btn-icon {
   display: inline-flex;

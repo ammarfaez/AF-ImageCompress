@@ -13,6 +13,17 @@ export const downloadSingleFile = (file, filename) => {
   URL.revokeObjectURL(url);
 };
 
+export const downloadAllAsFiles = (images, format) => {
+  images.forEach((image, index) => {
+    if (image.compressed) {
+      const baseName = getFileNameWithoutExtension(image.original.name);
+      const extension = format === 'jpeg' ? 'jpg' : format;
+      const filename = `${baseName}-compressed.${extension}`;
+      setTimeout(() => downloadSingleFile(image.compressed, filename), index * 150);
+    }
+  });
+};
+
 export const downloadAllAsZip = async (images, format) => {
   const zip = new JSZip();
   const folder = zip.folder('compressed-images');

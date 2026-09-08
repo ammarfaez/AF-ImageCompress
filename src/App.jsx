@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image as ImageIcon, Zap, Download, Trash2, ShieldCheck, Sparkles, HardDrive } from 'lucide-react';
+import { Image as ImageIcon, Zap, Download, FileDown, Trash2, ShieldCheck, Sparkles, HardDrive } from 'lucide-react';
 import DropZone from './components/DropZone';
 import ImageGrid from './components/ImageGrid';
 import QualitySlider from './components/QualitySlider';
@@ -7,7 +7,7 @@ import FormatSelector from './components/FormatSelector';
 import CompressionStats from './components/CompressionStats';
 import ProgressBar from './components/ProgressBar';
 import { useImageCompressor } from './hooks/useImageCompressor';
-import { downloadAllAsZip } from './utils/downloadHelpers';
+import { downloadAllAsZip, downloadAllAsFiles } from './utils/downloadHelpers';
 
 function App() {
   const [quality, setQuality] = useState(80);
@@ -34,6 +34,11 @@ function App() {
   const handleDownloadAll = () => {
     const completedImages = images.filter(img => img.status === 'done');
     downloadAllAsZip(completedImages, format);
+  };
+
+  const handleDownloadAllFiles = () => {
+    const completedImages = images.filter(img => img.status === 'done');
+    downloadAllAsFiles(completedImages, format);
   };
 
   return (
@@ -97,6 +102,14 @@ function App() {
                   >
                     <Download className="w-5 h-5" />
                     Download All (ZIP)
+                  </button>
+
+                  <button
+                    onClick={handleDownloadAllFiles}
+                    className="btn btn-outline px-8 py-3.5 text-sm"
+                  >
+                    <FileDown className="w-5 h-5" />
+                    Download All (Files)
                   </button>
 
                   <button
