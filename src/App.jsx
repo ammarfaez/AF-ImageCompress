@@ -77,7 +77,7 @@ function App() {
             <div className="h-px bg-slate-800 my-7" />
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               <button
                 onClick={handleCompressAll}
                 disabled={isCompressing || pendingCount === 0}
