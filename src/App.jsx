@@ -54,7 +54,7 @@ function App() {
           <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight mb-5">
             Image Compressor
           </h1>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto">
+          <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto text-center" style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
             Shrink JPG, PNG and WebP images right in your browser.
             No uploads, no servers — your photos never leave your device.
           </p>
