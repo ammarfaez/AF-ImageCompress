@@ -52,13 +52,13 @@ const ImageCard = ({ image, format, onRemove }) => {
       </div>
 
         {/* Info Section */}
-        <div className="p-4 flex flex-col flex-1">
+        <div className="p-5 flex flex-col flex-1">
           <p className="text-sm font-medium text-slate-200 truncate mb-4" title={image.original.name}>
             {image.original.name}
           </p>
 
           {/* File Sizes */}
-          <div className="space-y-2 mb-4">
+          <div className="space-y-2.5 mb-5">
             <div className="flex justify-between text-sm">
               <span className="text-slate-400">Original:</span>
               <span className="text-slate-300">{formatFileSize(image.originalSize)}</span>

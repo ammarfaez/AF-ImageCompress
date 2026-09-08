@@ -45,8 +45,8 @@ function App() {
       </div>
 
       {/* Header / Hero */}
-      <header className="relative px-4 pt-16 pb-10 sm:pt-20 sm:pb-14">
-        <div className="max-w-3xl mx-auto text-center">
+      <header className="relative px-4 pt-20 pb-12 sm:pt-24 sm:pb-16">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium mb-8">
             <Sparkles className="w-4 h-4" />
             Free · Private · In-browser
@@ -62,19 +62,19 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="relative max-w-3xl mx-auto px-4 pb-16 sm:pb-20">
+      <main className="relative max-w-4xl mx-auto px-4 pb-20 sm:pb-24">
         {/* Drop Zone */}
         <DropZone onFilesAdded={addImages} />
 
         {/* Controls Section */}
         {hasImages && (
-          <section className="mt-8 p-5 sm:p-7 bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-800">
-            <div className="grid md:grid-cols-2 gap-8">
+          <section className="mt-10 p-6 sm:p-8 bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-800">
+            <div className="grid md:grid-cols-2 gap-10">
               <QualitySlider value={quality} onChange={setQuality} />
               <FormatSelector value={format} onChange={setFormat} />
             </div>
 
-            <div className="h-px bg-slate-800 my-7" />
+            <div className="h-px bg-slate-800 my-8" />
 
             {/* Action Buttons */}
             <div className="flex flex-wrap justify-center gap-3">
@@ -122,7 +122,7 @@ function App() {
 
             {/* Progress Bar */}
             {isCompressing && (
-              <div className="mt-6">
+              <div className="mt-8">
                 <ProgressBar progress={overallProgress} label="Overall Progress" />
               </div>
             )}
@@ -131,14 +131,14 @@ function App() {
 
         {/* Compression Stats */}
         {hasImages && (
-          <div className="mt-6">
+          <div className="mt-8">
             <CompressionStats images={images} />
           </div>
         )}
 
         {/* Image Grid */}
         {hasImages && (
-          <div className="mt-6">
+          <div className="mt-8">
             <ImageGrid 
               images={images} 
               format={format}
@@ -149,7 +149,7 @@ function App() {
 
         {/* Empty State */}
         {!hasImages && (
-          <div className="mt-14 text-center">
+          <div className="mt-16 text-center">
             <div className="inline-flex items-center justify-center p-6 bg-slate-900/70 backdrop-blur rounded-2xl mb-4">
               <ImageIcon className="w-16 h-16 text-slate-600" />
             </div>
@@ -165,21 +165,21 @@ function App() {
 
       {/* Features strip */}
       {!hasImages && (
-        <div className="relative max-w-3xl mx-auto px-4 pb-16">
-          <div className="grid sm:grid-cols-3 gap-4">
-            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+        <div className="relative max-w-4xl mx-auto px-4 pb-20">
+          <div className="grid sm:grid-cols-3 gap-5">
+            <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <ShieldCheck className="w-6 h-6 text-green-400 mb-3" />
-              <p className="text-sm font-medium text-slate-300 mb-1">100% Private</p>
+              <p className="text-sm font-medium text-slate-300 mb-1.5">100% Private</p>
               <p className="text-xs text-slate-500">Files never uploaded</p>
             </div>
-            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+            <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <Zap className="w-6 h-6 text-blue-400 mb-3" />
-              <p className="text-sm font-medium text-slate-300 mb-1">Instant & Free</p>
+              <p className="text-sm font-medium text-slate-300 mb-1.5">Instant & Free</p>
               <p className="text-xs text-slate-500">No sign-up required</p>
             </div>
-            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+            <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <HardDrive className="w-6 h-6 text-indigo-400 mb-3" />
-              <p className="text-sm font-medium text-slate-300 mb-1">Save Storage</p>
+              <p className="text-sm font-medium text-slate-300 mb-1.5">Save Storage</p>
               <p className="text-xs text-slate-500">Up to 90% smaller</p>
             </div>
           </div>
@@ -187,8 +187,8 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="relative py-8 text-center border-t border-slate-800/70">
-        <div className="max-w-3xl mx-auto px-4">
+      <footer className="relative py-10 text-center border-t border-slate-800/70">
+        <div className="max-w-4xl mx-auto px-4">
           <p className="text-sm text-slate-500">
             All processing happens in your browser. Your images never leave your device.
           </p>
