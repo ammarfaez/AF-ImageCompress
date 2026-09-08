@@ -19,7 +19,7 @@ const DropZone = ({ onFilesAdded }) => {
         onDrop={handleDrop}
         className={`
           relative flex flex-col items-center justify-center
-          w-full h-80 border-2 border-dashed rounded-2xl
+          w-full h-96 border-2 border-dashed rounded-2xl
           cursor-pointer transition-all duration-300 ease-in-out
           ${isDragOver 
             ? 'border-blue-400 bg-blue-500/10 scale-[1.02]' 
@@ -36,28 +36,28 @@ const DropZone = ({ onFilesAdded }) => {
         />
         
         <div className={`
-          p-5 rounded-full mb-5 transition-colors duration-300
+          p-6 rounded-full mb-6 transition-colors duration-300
           ${isDragOver ? 'bg-blue-500/20' : 'bg-slate-700/50'}
         `}>
           {isDragOver ? (
-            <ImageIcon className="w-14 h-14 text-blue-400" />
+            <ImageIcon className="w-16 h-16 text-blue-400" />
           ) : (
-            <Upload className="w-14 h-14 text-slate-400" />
+            <Upload className="w-16 h-16 text-slate-400" />
           )}
         </div>
         
         <p className={`
-          text-lg font-medium mb-2 transition-colors duration-300
+          text-xl font-medium mb-3 transition-colors duration-300
           ${isDragOver ? 'text-blue-300' : 'text-slate-300'}
         `}>
           {isDragOver ? 'Drop your images here' : 'Drag & drop images here'}
         </p>
         
-        <p className="text-sm text-slate-500 mb-4">
+        <p className="text-sm text-slate-500 mb-5">
           or click to browse
         </p>
         
-        <p className="text-xs text-slate-600 mt-2">
+        <p className="text-xs text-slate-600 mt-3">
           Supports: JPG, PNG, WebP, BMP, GIF (max 50MB each)
         </p>
       </label>

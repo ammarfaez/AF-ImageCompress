@@ -1,0 +1,13 @@
+[build]
+  publish = "dist"
+
+# Never cache the HTML so every reload gets the latest assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

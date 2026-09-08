@@ -45,7 +45,7 @@ function App() {
       </div>
 
       {/* Header / Hero */}
-      <header className="relative px-4 pt-24 pb-16 sm:pt-32 sm:pb-20">
+      <header className="relative px-4 pt-28 pb-24 sm:pt-36 sm:pb-28">
         <div className="max-w-4xl mx-auto text-center" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium mb-10">
             <Sparkles className="w-4 h-4" />
@@ -64,7 +64,7 @@ function App() {
       {/* Main Content */}
       <main className="relative max-w-4xl mx-auto px-4 pb-20 sm:pb-24" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
         {/* Drop Zone */}
-        <div className="mt-6">
+        <div className="mt-2">
           <DropZone onFilesAdded={addImages} />
         </div>
 
@@ -167,8 +167,8 @@ function App() {
 
       {/* Features strip */}
       {!hasImages && (
-        <div className="relative max-w-4xl mx-auto px-4 pb-28" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
-          <div className="grid sm:grid-cols-3 gap-6">
+        <div className="relative max-w-4xl mx-auto px-4 mt-16 pb-32" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="grid sm:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <ShieldCheck className="w-6 h-6 text-green-400 mb-3" />
               <p className="text-sm font-medium text-slate-300 mb-1.5">100% Private</p>
@@ -189,7 +189,7 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="relative py-12 text-center border-t border-slate-800/70">
+      <footer className="relative py-14 text-center border-t border-slate-800/70 mt-16">
         <div className="max-w-4xl mx-auto px-4" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
           <p className="text-sm text-slate-500">
             All processing happens in your browser. Your images never leave your device.
