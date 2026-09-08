@@ -64,11 +64,13 @@ function App() {
       {/* Main Content */}
       <main className="relative max-w-4xl mx-auto px-4 pb-20 sm:pb-24" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
         {/* Drop Zone */}
-        <DropZone onFilesAdded={addImages} />
+        <div className="mt-6">
+          <DropZone onFilesAdded={addImages} />
+        </div>
 
         {/* Controls Section */}
         {hasImages && (
-          <section className="mt-12 p-6 sm:p-10 bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-800">
+          <section className="mt-16 p-6 sm:p-10 bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-800">
             <div className="grid md:grid-cols-2 gap-12">
               <QualitySlider value={quality} onChange={setQuality} />
               <FormatSelector value={format} onChange={setFormat} />
@@ -131,14 +133,14 @@ function App() {
 
         {/* Compression Stats */}
         {hasImages && (
-          <div className="mt-10">
+          <div className="mt-16">
             <CompressionStats images={images} />
           </div>
         )}
 
         {/* Image Grid */}
         {hasImages && (
-          <div className="mt-10">
+          <div className="mt-16">
             <ImageGrid 
               images={images} 
               format={format}
@@ -149,7 +151,7 @@ function App() {
 
         {/* Empty State */}
         {!hasImages && (
-          <div className="mt-20 text-center">
+          <div className="mt-24 text-center">
             <div className="inline-flex items-center justify-center p-8 bg-slate-900/70 backdrop-blur rounded-2xl mb-6">
               <ImageIcon className="w-16 h-16 text-slate-600" />
             </div>
@@ -165,7 +167,7 @@ function App() {
 
       {/* Features strip */}
       {!hasImages && (
-        <div className="relative max-w-4xl mx-auto px-4 pb-24" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className="relative max-w-4xl mx-auto px-4 pb-28" style={{ maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="flex flex-col items-center text-center p-6 bg-slate-900/50 rounded-2xl border border-slate-800">
               <ShieldCheck className="w-6 h-6 text-green-400 mb-3" />
