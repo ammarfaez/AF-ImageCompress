@@ -19,11 +19,11 @@ const DropZone = ({ onFilesAdded }) => {
         onDrop={handleDrop}
         className={`
           relative flex flex-col items-center justify-center
-          w-full h-64 border-2 border-dashed rounded-2xl
+          w-full h-72 border-2 border-dashed rounded-2xl
           cursor-pointer transition-all duration-300 ease-in-out
           ${isDragOver 
             ? 'border-blue-400 bg-blue-500/10 scale-[1.02]' 
-            : 'border-slate-600 bg-slate-800/50 hover:border-slate-500 hover:bg-slate-800/80'
+            : 'border-slate-700 bg-slate-900/50 hover:border-slate-500 hover:bg-slate-900/80'
           }
         `}
       >

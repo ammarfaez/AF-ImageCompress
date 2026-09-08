@@ -16,9 +16,9 @@ const ImageCard = ({ image, format, onRemove }) => {
     : 0;
 
   return (
-    <div className="bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden hover:border-slate-600/50 transition-all duration-300">
+    <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden transition-all duration-300 hover:border-slate-700 hover:shadow-lg hover:shadow-black/30 flex flex-col">
       {/* Image Preview */}
-      <div className="relative aspect-video bg-slate-900/50">
+      <div className="relative aspect-video bg-slate-950">
         <img
           src={image.compressedUrl || image.originalUrl}
           alt={image.original.name}
@@ -51,59 +51,59 @@ const ImageCard = ({ image, format, onRemove }) => {
         )}
       </div>
 
-      {/* Info Section */}
-      <div className="p-4">
-        <p className="text-sm font-medium text-slate-200 truncate mb-3" title={image.original.name}>
-          {image.original.name}
-        </p>
-        
-        {/* File Sizes */}
-        <div className="space-y-2 mb-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-slate-400">Original:</span>
-            <span className="text-slate-300">{formatFileSize(image.originalSize)}</span>
-          </div>
-          
-          {image.compressedSize && (
-            <>
-              <div className="flex justify-between text-sm">
-                <span className="text-slate-400">Compressed:</span>
-                <span className="text-green-400">{formatFileSize(image.compressedSize)}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-slate-400">Saved:</span>
-                <span className={`font-medium ${savings > 0 ? 'text-green-400' : 'text-yellow-400'}`}>
-                  {savings}%
-                </span>
-              </div>
-            </>
-          )}
-        </div>
+        {/* Info Section */}
+        <div className="p-4 flex flex-col flex-1">
+          <p className="text-sm font-medium text-slate-200 truncate mb-4" title={image.original.name}>
+            {image.original.name}
+          </p>
 
-        {/* Action Buttons */}
-        <div className="flex gap-2">
-          {image.status === 'done' && (
+          {/* File Sizes */}
+          <div className="space-y-2 mb-4">
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-400">Original:</span>
+              <span className="text-slate-300">{formatFileSize(image.originalSize)}</span>
+            </div>
+
+            {image.compressedSize && (
+              <>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-400">Compressed:</span>
+                  <span className="text-green-400">{formatFileSize(image.compressedSize)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-400">Saved:</span>
+                  <span className={`font-medium ${savings > 0 ? 'text-green-400' : 'text-yellow-400'}`}>
+                    {savings}%
+                  </span>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-2 mt-auto">
+            {image.status === 'done' && (
+              <button
+                onClick={handleDownload}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5
+                  bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium
+                  rounded-xl transition-colors duration-200"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </button>
+            )}
+
             <button
-              onClick={handleDownload}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 
-                bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium 
-                rounded-xl transition-colors duration-200"
+              onClick={() => onRemove(image.id)}
+              className="p-2.5 bg-slate-800 hover:bg-slate-700
+                text-slate-400 hover:text-red-400 rounded-xl
+                transition-colors duration-200"
             >
-              <Download className="w-4 h-4" />
-              Download
+              <Trash2 className="w-4 h-4" />
             </button>
-          )}
-          
-          <button
-            onClick={() => onRemove(image.id)}
-            className="p-2.5 bg-slate-700/50 hover:bg-slate-600/50 
-              text-slate-400 hover:text-red-400 rounded-xl 
-              transition-colors duration-200"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+          </div>
         </div>
-      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image as ImageIcon, Zap, Download, Trash2 } from 'lucide-react';
+import { Image as ImageIcon, Zap, Download, Trash2, ShieldCheck, Sparkles, HardDrive } from 'lucide-react';
 import DropZone from './components/DropZone';
 import ImageGrid from './components/ImageGrid';
 import QualitySlider from './components/QualitySlider';
@@ -37,38 +37,47 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Header */}
-      <header className="py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center p-4 bg-blue-500/10 rounded-2xl mb-6">
-            <ImageIcon className="w-12 h-12 text-blue-400" />
+    <div className="min-h-screen bg-slate-950 text-slate-200 antialiased">
+      {/* Decorative background */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
+
+      {/* Header / Hero */}
+      <header className="relative px-4 pt-16 pb-10 sm:pt-20 sm:pb-14">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full text-sm font-medium mb-8">
+            <Sparkles className="w-4 h-4" />
+            Free · Private · In-browser
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight mb-5">
             Image Compressor
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Compress your images directly in the browser. No upload to servers, 
-            completely private and free.
+          <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto">
+            Shrink JPG, PNG and WebP images right in your browser.
+            No uploads, no servers — your photos never leave your device.
           </p>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 pb-12">
+      <main className="relative max-w-3xl mx-auto px-4 pb-16 sm:pb-20">
         {/* Drop Zone */}
         <DropZone onFilesAdded={addImages} />
 
         {/* Controls Section */}
         {hasImages && (
-          <div className="mt-8 p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50">
+          <section className="mt-8 p-5 sm:p-7 bg-slate-900/70 backdrop-blur rounded-2xl border border-slate-800">
             <div className="grid md:grid-cols-2 gap-8">
               <QualitySlider value={quality} onChange={setQuality} />
               <FormatSelector value={format} onChange={setFormat} />
             </div>
 
+            <div className="h-px bg-slate-800 my-7" />
+
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-3 mt-8">
+            <div className="flex flex-wrap gap-3">
               <button
                 onClick={handleCompressAll}
                 disabled={isCompressing || pendingCount === 0}
@@ -76,8 +85,8 @@ function App() {
                   flex items-center gap-2 px-6 py-3 rounded-xl font-medium
                   transition-all duration-200
                   ${isCompressing || pendingCount === 0
-                    ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-500 text-white hover:shadow-lg hover:shadow-blue-500/25'
+                    ? 'bg-slate-800 text-slate-600 cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:shadow-blue-500/30'
                   }
                 `}
               >
@@ -91,7 +100,8 @@ function App() {
                     onClick={handleDownloadAll}
                     className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium
                       bg-green-600 hover:bg-green-500 text-white
-                      transition-all duration-200 hover:shadow-lg hover:shadow-green-500/25"
+                      shadow-lg shadow-green-600/25 hover:shadow-green-500/30
+                      transition-all duration-200"
                   >
                     <Download className="w-5 h-5" />
                     Download All (ZIP)
@@ -100,7 +110,7 @@ function App() {
                   <button
                     onClick={clearAll}
                     className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium
-                      bg-slate-700 hover:bg-slate-600 text-slate-300
+                      bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700
                       transition-all duration-200"
                   >
                     <Trash2 className="w-5 h-5" />
@@ -116,7 +126,7 @@ function App() {
                 <ProgressBar progress={overallProgress} label="Overall Progress" />
               </div>
             )}
-          </div>
+          </section>
         )}
 
         {/* Compression Stats */}
@@ -139,11 +149,11 @@ function App() {
 
         {/* Empty State */}
         {!hasImages && (
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center justify-center p-6 bg-slate-800/50 rounded-2xl mb-4">
+          <div className="mt-14 text-center">
+            <div className="inline-flex items-center justify-center p-6 bg-slate-900/70 backdrop-blur rounded-2xl mb-4">
               <ImageIcon className="w-16 h-16 text-slate-600" />
             </div>
-            <h3 className="text-xl font-medium text-slate-400 mb-2">
+            <h3 className="text-xl font-medium text-slate-300 mb-2">
               No images yet
             </h3>
             <p className="text-slate-500">
@@ -153,11 +163,36 @@ function App() {
         )}
       </main>
 
+      {/* Features strip */}
+      {!hasImages && (
+        <div className="relative max-w-3xl mx-auto px-4 pb-16">
+          <div className="grid sm:grid-cols-3 gap-4">
+            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+              <ShieldCheck className="w-6 h-6 text-green-400 mb-3" />
+              <p className="text-sm font-medium text-slate-300 mb-1">100% Private</p>
+              <p className="text-xs text-slate-500">Files never uploaded</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+              <Zap className="w-6 h-6 text-blue-400 mb-3" />
+              <p className="text-sm font-medium text-slate-300 mb-1">Instant & Free</p>
+              <p className="text-xs text-slate-500">No sign-up required</p>
+            </div>
+            <div className="flex flex-col items-center text-center p-5 bg-slate-900/50 rounded-2xl border border-slate-800">
+              <HardDrive className="w-6 h-6 text-indigo-400 mb-3" />
+              <p className="text-sm font-medium text-slate-300 mb-1">Save Storage</p>
+              <p className="text-xs text-slate-500">Up to 90% smaller</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
-      <footer className="py-8 text-center border-t border-slate-800">
-        <p className="text-sm text-slate-500">
-          All processing happens in your browser. Your images never leave your device.
-        </p>
+      <footer className="relative py-8 text-center border-t border-slate-800/70">
+        <div className="max-w-3xl mx-auto px-4">
+          <p className="text-sm text-slate-500">
+            All processing happens in your browser. Your images never leave your device.
+          </p>
+        </div>
       </footer>
     </div>
   );
