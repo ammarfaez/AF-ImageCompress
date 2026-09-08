@@ -83,7 +83,7 @@ function App() {
               <button
                 onClick={handleCompressAll}
                 disabled={isCompressing || pendingCount === 0}
-                className="btn btn-primary px-6 py-3 text-sm"
+                className="btn btn-primary px-8 py-3.5 text-sm"
               >
                 <Zap className="w-5 h-5" />
                 {isCompressing ? 'Compressing...' : `Compress All (${pendingCount})`}
@@ -93,7 +93,7 @@ function App() {
                 <>
                   <button
                     onClick={handleDownloadAll}
-                    className="btn btn-success px-6 py-3 text-sm"
+                    className="btn btn-success px-8 py-3.5 text-sm"
                   >
                     <Download className="w-5 h-5" />
                     Download All (ZIP)
@@ -101,7 +101,7 @@ function App() {
 
                   <button
                     onClick={clearAll}
-                    className="btn btn-ghost px-6 py-3 text-sm"
+                    className="btn btn-ghost px-8 py-3.5 text-sm"
                   >
                     <Trash2 className="w-5 h-5" />
                     Clear All
