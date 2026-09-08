@@ -1,0 +1,111 @@
+import { Download, Trash2, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { formatFileSize, calculateSavings, getFileNameWithoutExtension } from '../utils/fileHelpers';
+import { downloadSingleFile } from '../utils/downloadHelpers';
+
+const ImageCard = ({ image, format, onRemove }) => {
+  const handleDownload = () => {
+    if (image.compressed) {
+      const baseName = getFileNameWithoutExtension(image.original.name);
+      const extension = format === 'jpeg' ? 'jpg' : format;
+      downloadSingleFile(image.compressed, `${baseName}-compressed.${extension}`);
+    }
+  };
+
+  const savings = image.compressedSize 
+    ? calculateSavings(image.originalSize, image.compressedSize) 
+    : 0;
+
+  return (
+    <div className="bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden hover:border-slate-600/50 transition-all duration-300">
+      {/* Image Preview */}
+      <div className="relative aspect-video bg-slate-900/50">
+        <img
+          src={image.compressedUrl || image.originalUrl}
+          alt={image.original.name}
+          className="w-full h-full object-cover"
+        />
+        
+        {/* Status Overlay */}
+        {image.status === 'compressing' && (
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              <Loader className="w-8 h-8 text-blue-400 animate-spin mb-2" />
+              <span className="text-sm text-slate-300">{image.progress}%</span>
+            </div>
+          </div>
+        )}
+        
+        {image.status === 'done' && (
+          <div className="absolute top-3 right-3">
+            <CheckCircle className="w-6 h-6 text-green-400" />
+          </div>
+        )}
+        
+        {image.status === 'error' && (
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              <AlertCircle className="w-8 h-8 text-red-400 mb-2" />
+              <span className="text-sm text-red-300">Failed</span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Info Section */}
+      <div className="p-4">
+        <p className="text-sm font-medium text-slate-200 truncate mb-3" title={image.original.name}>
+          {image.original.name}
+        </p>
+        
+        {/* File Sizes */}
+        <div className="space-y-2 mb-4">
+          <div className="flex justify-between text-sm">
+            <span className="text-slate-400">Original:</span>
+            <span className="text-slate-300">{formatFileSize(image.originalSize)}</span>
+          </div>
+          
+          {image.compressedSize && (
+            <>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-400">Compressed:</span>
+                <span className="text-green-400">{formatFileSize(image.compressedSize)}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-slate-400">Saved:</span>
+                <span className={`font-medium ${savings > 0 ? 'text-green-400' : 'text-yellow-400'}`}>
+                  {savings}%
+                </span>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-2">
+          {image.status === 'done' && (
+            <button
+              onClick={handleDownload}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 
+                bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium 
+                rounded-xl transition-colors duration-200"
+            >
+              <Download className="w-4 h-4" />
+              Download
+            </button>
+          )}
+          
+          <button
+            onClick={() => onRemove(image.id)}
+            className="p-2.5 bg-slate-700/50 hover:bg-slate-600/50 
+              text-slate-400 hover:text-red-400 rounded-xl 
+              transition-colors duration-200"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ImageCard;
